@@ -9,7 +9,7 @@ contract Lottery{
         manager=msg.sender; // global varaible
     }
     receive() external payable 
-    {   require(msg.value==1 ether);
+    {   require(msg.value==7 ether);
         participants.push(payable(msg.sender));
     }
     function getBalance() public view returns(uint)
@@ -23,7 +23,7 @@ contract Lottery{
     function selectWinner()  public
     {
         require(msg.sender==manager);
-        require(participants.length>=3);
+        require(participants.length>=11);
         uint r= random();
         address payable winner;
         uint index=r% participants.length;
